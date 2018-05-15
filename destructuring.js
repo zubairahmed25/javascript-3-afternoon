@@ -18,24 +18,24 @@ var carDetails = {
 // Do not edit the code above.
 
 /*
-  Use object destructuring to save the property values from the object carDetails into new variables. 
+  Use object destructuring to save the property values from the object carDetails into new variables.
 */
 
-//Code Here
+const {color, make, model, year} = carDetails;
 
 
 
 ////////// PROBLEM 2 //////////
 
 /*
-  In the function below named greeting, it is receiving an object as a parameter. 
-  Use object destructuring to save the object properties to new variables. 
+  In the function below named greeting, it is receiving an object as a parameter.
+  Use object destructuring to save the object properties to new variables.
   The property names are firstName, lastName, and title.
 */
 
 function greeting( obj ) {
-  //Code Here
-  
+  const {firstName, lastName, title} = obj;
+
   // Do not edit the code below.
   return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
   // Do not edit the code above.
@@ -53,21 +53,31 @@ function greeting( obj ) {
   Sum up the values and return the total number.
 */
 
-//Code Here
+function totalPopulation(obj){
+
+  const {utah, california, texas, arizona} = obj;
+  total = utah + california + texas + arizona;
+  return total;
+}
 
 
 
 ////////// PROBLEM 4 //////////
 
 /*
-  Write a function called ingredients that will take in an object. 
-  This object will have 3 properties named carb, fat, and protein. 
-  The property values will be strings. 
-  Use object destructuring to save the property values to new variables. 
-  Push these new variables to an array and return the array. 
+  Write a function called ingredients that will take in an object.
+  This object will have 3 properties named carb, fat, and protein.
+  The property values will be strings.
+  Use object destructuring to save the property values to new variables.
+  Push these new variables to an array and return the array.
 */
 
-//Code Here
+function ingredients (obj)
+{
+  const {carb, fat, protein} = obj;
+  newArray = [carb, fat, protein];
+  return newArray;
+}
 
 
 
@@ -85,7 +95,10 @@ function greeting( obj ) {
   Find the smallest number of the three and return that number.
 */
 
-//Code Here
+function largeNumbers (first, second, third) {
+  return Math.min(first, second, third);
+}
+
 
 
 
@@ -98,5 +111,3 @@ function greeting( obj ) {
 */
 
 //Code Here
-
-

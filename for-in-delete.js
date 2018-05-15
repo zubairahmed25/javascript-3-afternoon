@@ -11,25 +11,25 @@
   In the example below, we are accessing the property values. Uncomment the code below, run it and look at what prints in the console.
 */
 
-// var values = {
-//   one: 'These',
-//   two: ' are',
-//   three: ' the',
-//   four: ' property',
-//   five: ' values.'
-// } 
+var values = {
+  one: 'These',
+  two: ' are',
+  three: ' the',
+  four: ' property',
+  five: ' values.'
+}
 
-// for(var key in values) {
-//   console.log(values[key])
-// }
+for(var key in values) {
+  console.log(values[key])
+}
 
 /*
   In this next example, we are accessing the property names themselves. Uncomment the code below, run it and look at what prints in the console.
 */
 
-// for(var key in values) {
-//   console.log(key)
-// }
+for(var key in values) {
+  console.log(key)
+}
 
 
 
@@ -40,21 +40,34 @@
 */
 
 function showValues( obj ) {
-  //Code Here
+  var string = '';
+  for(var key in obj){
+    string += obj[key];
+  }
+  return string;
 }
+
+console.log('showValues', showValues(values))
 
 
 
 ////////// PROBLEM 2 //////////
 
 /*
-  Write a function called greaterThan10 that takes in an object. 
-  Write a for in loop that loops over the object and changes any value that is great than 10 to 0. 
+  Write a function called greaterThan10 that takes in an object.
+  Write a for in loop that loops over the object and changes any value that is great than 10 to 0.
   Return the updated object.
 */
 
 //Code Here
-
+function greaterThan10(obj){
+  for(var key in obj){
+    if(obj[key] > 10){
+      obj[key] = 0;
+    }
+  }
+  return obj;
+}
 
 
 ////////// PROBLEM 3 //////////
@@ -66,7 +79,12 @@ function showValues( obj ) {
 */
 
 //Code Here
-
+const double = (object) => {
+  for(const key in object){
+    object[key] *= 2;
+  }
+  return object;
+}
 
 
 ////////// PROBLEM 4 //////////
@@ -80,26 +98,44 @@ function showValues( obj ) {
 */
 
 //Code Here
+const secrets = (object) => {
+  var str = "";
+  for(const key in object){
+    if(key.indexOf("sh") === 0){
+      str += object[key];
+    }
+  }
+  return str;
+}
+
+const sample = {
+  sh: 1,
+  sh2: 3,
+  abcd: 5,
+  sh3: 4
+};
+
+console.log('secrets', secrets(sample));
 
 
-
-/* 
-  Sometimes it's needed to delete object properties. 
-  All you need is the word delete before a reference to the object property value. 
+/*
+  Sometimes it's needed to delete object properties.
+  All you need is the word delete before a reference to the object property value.
   Uncomment the example below to see a for in loop deleting all the properties inside an object.
 */
 
-// var deleteAllThethings = {
-//   one: 1,
-//   two: 2,
-//   three: 3
-// }
+var deleteAllThethings = {
+  one: 1,
+  two: 2,
+  three: 3
+}
 
-// for(var key in deleteAllThethings) {
-//   delete deleteAllThethings[key]
-// }
+for(var key in deleteAllThethings) {
+  delete deleteAllThethings[key]
+}
 
-// console.log(deleteAllThethings)
+console.log(deleteAllThethings)
+
 
 
 
@@ -111,6 +147,20 @@ function showValues( obj ) {
 */
 
 //Code Here
+var removePassword = (object) => {
+  for(var key in object){
+    delete object['password'];
+  }
+  return object;
+}
+
+const sample2 = {
+  password: 123,
+  pass: 123,
+  pass2: 123,
+}
+
+console.log('removePassword', removePassword(sample2));
 
 
 
@@ -130,6 +180,16 @@ var deleteTheBigNumbers = {
 */
 
 //Code Here
+function deleteProp(){
+  for(var key in deleteTheBigNumbers){
+    if(deleteTheBigNumbers[key]>100){
+      delete deleteTheBigNumbers[key];
+    }
+  }
+}
+
+deleteProp()
+console.log('deleteTheBigNumbers', deleteTheBigNumbers)
 
 
 
@@ -143,8 +203,25 @@ var deleteTheBigNumbers = {
 */
 
 //Code Here
+function startsWithK(obj){
+  var newObj = Object.assign({}, obj)
+  for(var key in newObj){
+    if(key.indexOf("k") === 0){
+      delete newObj[key];
+    }
+  }
+  return newObj;
+}
 
+var sample3 = {
+  hello: 1,
+  kello: 2,
+  hello2: 3,
+  kello2: 4,
+};
 
+console.log('startsWithK', startsWithK(sample3))
+console.log('sample3', sample3)
 
 ////////// PROBLEM 8 //////////
 
@@ -159,4 +236,25 @@ var deleteTheBigNumbers = {
 
 //Code Here
 
+function hiddenTreasure(obj){
+  var newObj = Object.assign({}, obj)
+  for(var key in newObj){
+    // console.log('newObj[key]', newObj[key])
+    // console.log('key', key)
+    if(!newObj[key].includes("treasure")){
+      delete newObj[key];
+      // console.log('TestingTesting', key)
+    }
+  }return newObj;
+}
 
+var sample3 = {
+  key1: "hello treasure",
+  key2: "hello",
+  key3: "hello hello",
+  key4: "treasure hello"
+};
+
+// console.log('test1', sample3.key1.includes('h1'))
+
+console.log('hiddenTreasure', hiddenTreasure(sample3))
